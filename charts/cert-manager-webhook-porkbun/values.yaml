@@ -5,7 +5,7 @@ certManager:
   serviceAccountName: cert-manager
 
 image:
-  repository: talinx/cert-manager-webhook-porkbun
+  repository: ghcr.io/mechazawa/cert-manager-webhook-porkbun
   tag: latest
   pullPolicy: IfNotPresent
 

@@ -1,24 +1,14 @@
-# docker build -t 192.168.5.3:5000/cert-manager-webhook-porkbun .
-FROM golang:1.23-alpine3.20 AS build_deps
-
-RUN apk add --no-cache git
+FROM golang:1.27.4-alpine3.24 AS build
 
 WORKDIR /workspace
 
-COPY go.mod .
-COPY go.sum .
-
+COPY go.mod go.sum ./
 RUN go mod download
 
-FROM build_deps AS build
-
 COPY . .
+RUN CGO_ENABLED=0 go build -trimpath -ldflags '-s -w' -o webhook .
 
-RUN CGO_ENABLED=0 go build -o webhook -ldflags '-w -extldflags "-static"' .
-
-FROM alpine:3.20
-
-RUN apk add --no-cache ca-certificates
+FROM gcr.io/distroless/static-debian13
 
 COPY --from=build /workspace/webhook /usr/local/bin/webhook
 
