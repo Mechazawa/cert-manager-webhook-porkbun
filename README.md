@@ -13,7 +13,7 @@ This is a maintained rebuild of [talinx/cert-manager-webhook-porkbun](https://gi
 - Images are published to `ghcr.io/mechazawa/cert-manager-webhook-porkbun` for `linux/amd64` and `linux/arm64`.
 - The Go module path is `github.com/Mechazawa/cert-manager-webhook-porkbun`.
 
-Modified files: `go.mod`, `go.sum`, `main.go`, `example/example_test.go`, `Dockerfile`, `.github/workflows/`, `charts/cert-manager-webhook-porkbun/Chart.yaml`, `charts/cert-manager-webhook-porkbun/values.yaml` and this README.
+Modified files: `go.mod`, `go.sum`, `main.go`, `Dockerfile`, `.github/workflows/`, `charts/cert-manager-webhook-porkbun/Chart.yaml`, `charts/cert-manager-webhook-porkbun/values.yaml` and this README. The unused `example/` solver and the `Makefile` from the webhook template are removed.
 
 ## Installation
 
